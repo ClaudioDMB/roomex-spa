@@ -61,7 +61,6 @@
 
   <div class="form-group mt-3">
     <label for="postalCode">Favourite movie</label>
-
     <input
       [ngClass]="getValidationClass(movieId)"
       [(ngModel)]="selectedMovieTitle"
@@ -77,9 +76,14 @@
       placeholder="Search your favourite movie"
       class="form-control"
     />
-    <small id="movieHelp" class="form-text text-muted"
-    >Type 3 characters to start searching</small
-  >
+    <small *ngIf="typeaheadErrorMessage" class="form-text text-danger"
+    >{{typeaheadErrorMessage}}</small>
+  </div>
+    <span id="movieHelp" class="form-text text-muted"
+    >Type 3 characters to start searching</span>
+    <div>
+
+
     <ng-template #itemTemplate let-model="item" let-query="query">
       <div>
         <span>{{ model.Title }} - {{ model.Year }}</span>

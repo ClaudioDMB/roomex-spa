@@ -1,20 +1,19 @@
-import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import { User } from '../../models/users/user.model';
+import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
+import { User } from "../../models/users/user.model";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class UsersService {
   private formSubmittedData: User;
   constructor() {}
 
-
-  createUser(user:User){
+  createUser(user: User): void {
     this.formSubmittedData = user;
   }
 
-  getSavedUser(){
+  getSavedUser(): Observable<User> {
     return of(this.formSubmittedData);
   }
 }
