@@ -1,0 +1,69 @@
+<div *ngIf="movie" class="row">
+  <p class="mb-2">Favourite movie</p>
+
+  <div class="col-sm-3">
+    <img *ngIf="movie.Poster" [src]="movie.Poster" class="card-img-top" />
+  </div>
+  <div class="col-sm-9">
+    <h5 class="card-title mb-0">{{ movie.Title }} - {{ movie.Released }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      {{ movie.Genre }}
+    </h6>
+
+    <p class="card-text">
+      {{ movie.Plot }}
+    </p>
+
+    <div>
+      <!-- ACTORS COLLAPSE BUTTON -->
+      <button
+        type="button"
+        class="btn btn-primary me-2"
+        (click)="onClickCollapse('Actors')"
+        [attr.aria-expanded]="collapseExpanded === 'Actors'"
+        aria-controls="Actors"
+      >
+        Actors
+      </button>
+      <!-- ACTORS COLLAPSE BUTTON -->
+
+      <!-- AWARDS COLLAPSE BUTTON -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="onClickCollapse('Awards')"
+        [attr.aria-expanded]="collapseExpanded === 'Awards'"
+        aria-controls="Awards"
+      >
+        Awards
+      </button>
+      <!-- AWARDS COLLAPSE BUTTON -->
+
+      <!-- ACTORS COLLAPSE -->
+      <div
+        class="mt-2"
+        id="Actors"
+        [collapse]="collapseExpanded != 'Actors'"
+        [isAnimated]="true"
+      >
+        <div class="well well-lg card card-block card-header">
+          {{ movie.Actors }}
+        </div>
+      </div>
+      <!-- ACTORS COLLAPSE -->
+
+      <!-- AWARDS COLLAPSE -->
+      <div
+        class="mt-2"
+        id="Awards"
+        [collapse]="collapseExpanded !== 'Awards'"
+        [isAnimated]="true"
+      >
+        <div class="well well-lg card card-block card-header">
+          {{ movie.Awards }}
+        </div>
+      </div>
+      <!-- AWARDS COLLAPSE -->
+    </div>
+  </div>
+</div>

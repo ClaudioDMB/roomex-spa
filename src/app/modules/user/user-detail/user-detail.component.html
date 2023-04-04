@@ -1,0 +1,66 @@
+<div
+  class="d-flex justify-content-center"
+  *ngIf="userData$ | async as userData"
+>
+  <!-- {{userData | json}} -->
+  <div class="col-lg-8">
+    <div class="card mb-4">
+      <div class="card-body">
+        <!-- START NAME -->
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Name</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">{{ userData.name }}</p>
+          </div>
+        </div>
+        <!-- END NAME -->
+
+        <hr />
+        <!-- START USERNAME -->
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Username</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">{{ userData.username }}</p>
+          </div>
+        </div>
+        <!-- END USERNAME -->
+
+        <hr />
+
+        <!-- START COUNTRY -->
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Country</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">{{ userData.country }}</p>
+          </div>
+        </div>
+        <!-- END COUNTRY -->
+
+        <hr />
+
+        <!-- START POSTAL CODE -->
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Postal Code</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">{{ userData.postalCode }}</p>
+          </div>
+        </div>
+        <!-- END POSTAL CODE -->
+        <hr />
+
+        <!-- START MOVIE -->
+        <app-movie-detail [movie]="userData.movie"></app-movie-detail>
+        <!-- END MOVIE -->
+
+      </div>
+    </div>
+  </div>
+</div>
